@@ -35,11 +35,21 @@ docker sandbox network proxy opencode-openrouter-sandbox --allow-host "localhost
 
 ## Helpful Commands
 
-### Air-gap the Sandbox
-Restrict network access to only the Nginx proxy for OpenRouter:
+### Restrict Network Access
+Significantly restrict network access to only essential services:
 ```shell
 docker sandbox network proxy opencode-openrouter-sandbox --policy deny --allow-host "localhost:55432"
 ```
+
+> [!WARNING]
+> This heavily restricts network access but is not a true air-gap.
+>
+> Docker maintains a default allowlist including package managers (npm, PyPI, RubyGems), version control (GitHub), and select AI service APIs.
+>
+> After applying the policy above, you can view the full up-to-date policy:
+> ```powershell
+> Get-Content "$env:USERPROFILE\.docker\sandboxes\vm\opencode-openrouter-sandbox\proxy-config.json" | ConvertFrom-Json | ConvertTo-Json
+> ```
 
 ### Cleanup ALL Sandboxes
 ```shell
