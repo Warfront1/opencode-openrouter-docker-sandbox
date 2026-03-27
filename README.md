@@ -44,7 +44,7 @@ docker sandbox network proxy opencode-openrouter-sandbox --policy deny --allow-h
 > [!WARNING]
 > This heavily restricts network access but is not a true air-gap.
 >
-> Docker maintains a default allowlist including package managers (npm, PyPI, RubyGems), version control (GitHub), and select AI service APIs.
+> Even with this deny policy, Docker maintains a default allowlist including package managers (npm, PyPI, RubyGems), version control (GitHub), and select AI service APIs.
 >
 > After applying the policy above, you can view the full up-to-date policy:
 > ```powershell
