@@ -6,7 +6,7 @@ A secure way to run OpenCode with OpenRouter as a provider in a Docker Sandbox u
 
 ```mermaid
 flowchart LR
-    A[OpenCode in Docker Sandbox] -->|API Requests<br/>Fake API Key| B[Nginx Reverse Proxy<br/>localhost:55432]
+    A[OpenCode in Docker Sandbox] -->|API Requests<br/>Fake API Key| B[NGINX Reverse Proxy<br/>localhost:55432]
     B -->|Real OpenRouter API Key<br/>Proxies to| C[OpenRouter API<br/>openrouter.ai]
     C -->|LLM Response| B
     B -->|Returns| A
@@ -14,7 +14,7 @@ flowchart LR
 
 ## Setup
 
-### Start the nginx server
+### Start the NGINX server
 ```shell
 docker compose down
 docker compose up -d
@@ -27,7 +27,9 @@ docker build -t opencode-openrouter-sandbox:v1 .
 
 ### Run the Sandbox
 ```shell
+# Navigate to the directory you wish to run OpenCode on
 docker sandbox run -t opencode-openrouter-sandbox:v1 --name opencode-openrouter-sandbox opencode -- --model 'openrouter/google/gemini-3-flash-preview'
+# In another terminal window, execute the following command to allow the sandbox to access the NGINX server
 docker sandbox network proxy opencode-openrouter-sandbox --allow-host "localhost:55432"
 ```
 
