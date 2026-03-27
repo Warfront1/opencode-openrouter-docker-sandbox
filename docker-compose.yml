@@ -1,0 +1,10 @@
+services:
+  nginx-api-gateway:
+    image: nginx:alpine
+    container_name: nginx-api-gateway
+    ports:
+      - "55432:80"
+    environment:
+      - OPENROUTER_API_KEY=${OPENROUTER_API_KEY:?error}
+    volumes:
+      - ./config/nginx/nginx.conf.template:/etc/nginx/templates/default.conf.template:ro
