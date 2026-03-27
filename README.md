@@ -35,6 +35,12 @@ docker sandbox network proxy opencode-openrouter-sandbox --allow-host "localhost
 
 ## Helpful Commands
 
+### Air-gap the Sandbox
+Restrict network access to only the Nginx proxy for OpenRouter:
+```shell
+docker sandbox network proxy opencode-openrouter-sandbox --policy deny --allow-host "localhost:55432"
+```
+
 ### Cleanup ALL Sandboxes
 ```shell
 docker sandbox reset
