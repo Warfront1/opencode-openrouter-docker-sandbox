@@ -1,6 +1,6 @@
 services:
   nginx-api-gateway:
-    image: nginx:alpine
+    image: nginx:1.28.3-alpine3.23-perl@sha256:84885adffd682b5bfffc4b84f629efc60c4003e2784af5bedb68bece85babc01
     container_name: nginx-api-gateway
     ports:
       - "55432:80"
